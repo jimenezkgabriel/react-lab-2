@@ -1,35 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Button } from '@mui/material'
-import './App.css'
+import { Button, CssBaseline, Container, Grid } from '@mui/material'
+import TextInput from './components/TextInput/TextInput'
+import StatsDisplay from './components/StatsDisplay/StatsDisplay'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [words, setWords] = useState('')
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <Button>Click here</Button>
+      <CssBaseline />
+      <Container>
+        <Grid minHeight={'100vh'} container justifyContent={"center"} alignItems={"center"}>
+          <Grid size={{ xs: 12, sm: 10, md: 8, lg: 6 }}>
+            <TextInput onTextChange={(text) => { setCount(text.length); setWords(text) }} />
+            <StatsDisplay stats={{ characterCount: count, wordCount: count === 0 ? 0 : 1 + words.trim().split(/\s+/).length - 1, readingTime: count / 200 }} />
+          </Grid>
+        </Grid>
+        <h1>{count}</h1>
+      </Container>
     </>
   )
 }
