@@ -9,8 +9,8 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
     showReadingTime = true
 }) => {
     return (
-        <Stack direction={{ xs: "column", sm: "row" }} justifyContent={"space-around"} gap={2} mt={4} p={2} borderRadius={2} bgcolor="rgba(255, 255, 255, 0.1)">
-            <Grid direction={"column"} justifyItems={"center"}>
+        <Grid container mt={4} p={2} borderRadius={2} bgcolor="rgba(255, 255, 255, 0.1)">
+            <Grid size={{ xs: 12, sm: showReadingTime ? 4 : 6 }} direction={"column"} textAlign={"center"}>
                 <Typography variant="h6" color="white">
                     Characters
                 </Typography>
@@ -18,48 +18,31 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
                     {stats.characterCount}
                 </Typography>
             </Grid>
-            <Grid direction={"column"} justifyItems={"center"}>
+            <Grid size={{ xs: 12, sm: showReadingTime ? 4 : 6 }} textAlign="center">
                 <Typography variant="h6" color="white">
                     Words
                 </Typography>
                 <Typography variant="h6" color="white">
                     {stats.wordCount}
                 </Typography>
-                {/* Insert Character Counter Component On This Line */}
             </Grid>
-            <Grid direction={"column"} justifyItems={"center"}>
-                {showReadingTime && (
-                    <>
-                        <Typography variant="h6" color="white">
-                            Reading Time
-                        </Typography>
-                        <Typography variant="h6" color="white">
-                            {stats.readingTime.toFixed(2)}
-                        </Typography>
-                    </>
-                )}
-            </Grid>
-            {/* <Grid container direction={{ xs: "column", sm: "row" }} justifyContent={"space-between"} gap={2}>
-                <Grid container textAlign={"center"} direction={"column"}>
+            {showReadingTime && (
+                <Grid size={{ xs: 12, sm: 4 }} textAlign="center">
                     <Typography variant="h6" color="white">
-                        Characters
+                        Reading Time
                     </Typography>
                     <Typography variant="h6" color="white">
-                        {stats.characterCount}
+                        {stats.readingTime.toFixed(2)}
                     </Typography>
                 </Grid>
-                <Box>
-                    <Typography variant="h6" color="white">
-                        Words {stats.wordCount}
-                    </Typography>
-                </Box>
-                {showReadingTime && (
-                    <Typography variant="h6" color="white">
-                        Estimated Reading Time: {stats.readingTime.toFixed(2)} minutes
-                    </Typography>
-                )}
-            </Grid> */}
-        </Stack>
+            )}
+            <Grid size={12} textAlign="center" mt={2}>
+                <Typography variant="h6" color="white">
+                    Reading Time
+                    {/* CharacterCounter Component goes somewhere here */}
+                </Typography>
+            </Grid>
+        </Grid>
     );
 };
 export default StatsDisplay;
