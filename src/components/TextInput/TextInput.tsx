@@ -1,7 +1,8 @@
 import React from "react";
 import type { TextInputProps } from "../../types";
 
-import { TextField, Grid, colors, ListItem } from "@mui/material";
+import { TextField, colors } from "@mui/material";
+
 
 export const TextInput: React.FC<TextInputProps> = ({
     onTextChange,

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, CssBaseline, Container, Grid } from '@mui/material'
+import { CssBaseline, Container, Grid } from '@mui/material'
 import TextInput from './components/TextInput/TextInput'
 import StatsDisplay from './components/StatsDisplay/StatsDisplay'
 
@@ -17,7 +17,6 @@ function App() {
             <StatsDisplay stats={{ characterCount: count, wordCount: count === 0 ? 0 : 1 + words.trim().split(/\s+/).length - 1, readingTime: count / 200 }} />
           </Grid>
         </Grid>
-        <h1>{count}</h1>
       </Container>
     </>
   )
